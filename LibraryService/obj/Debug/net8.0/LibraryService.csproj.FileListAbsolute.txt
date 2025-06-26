@@ -47,3 +47,5 @@ D:\Exam\Exam\LibraryService\obj\Debug\net8.0\LibraryService.sourcelink.json
 D:\Exam\Exam\LibraryService\obj\Debug\net8.0\LibraryService.dll
 D:\Exam\Exam\LibraryService\obj\Debug\net8.0\refint\LibraryService.dll
 D:\Exam\Exam\LibraryService\obj\Debug\net8.0\LibraryService.pdb
+C:\Users\baran\OneDrive\Документы\C#\Exam\LibraryService\LibraryService\bin\Debug\net8.0\Microsoft.Extensions.AI.Abstractions.dll
+C:\Users\baran\OneDrive\Документы\C#\Exam\LibraryService\LibraryService\bin\Debug\net8.0\OllamaSharp.dll

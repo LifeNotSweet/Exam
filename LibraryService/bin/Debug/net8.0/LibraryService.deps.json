@@ -10,6 +10,7 @@
         "dependencies": {
           "Grpc.AspNetCore": "2.71.0",
           "Grpc.Core.Api": "2.71.0",
+          "OllamaSharp": "5.2.3",
           "System.Net.Http": "4.3.4",
           "System.Text.Json": "9.0.6"
         },
@@ -99,6 +100,14 @@
         }
       },
       "Grpc.Tools/2.71.0": {},
+      "Microsoft.Extensions.AI.Abstractions/9.5.0": {
+        "runtime": {
+          "lib/net8.0/Microsoft.Extensions.AI.Abstractions.dll": {
+            "assemblyVersion": "9.5.0.0",
+            "fileVersion": "9.500.25.26507"
+          }
+        }
+      },
       "Microsoft.Extensions.DependencyInjection/6.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection.Abstractions": "6.0.0",
@@ -137,6 +146,17 @@
       },
       "Microsoft.NETCore.Platforms/1.1.1": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
+      "OllamaSharp/5.2.3": {
+        "dependencies": {
+          "Microsoft.Extensions.AI.Abstractions": "9.5.0"
+        },
+        "runtime": {
+          "lib/net8.0/OllamaSharp.dll": {
+            "assemblyVersion": "5.2.3.0",
+            "fileVersion": "5.2.3.0"
+          }
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.fedora.23-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
       "runtime.fedora.24-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {},
@@ -631,6 +651,13 @@
       "path": "grpc.tools/2.71.0",
       "hashPath": "grpc.tools.2.71.0.nupkg.sha512"
     },
+    "Microsoft.Extensions.AI.Abstractions/9.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Y46j1S4zOPtLAHCUzhHIm1IhCMr7764754bLYupyc1JZcvLNXjUk+VC7H3Bou20S2hHgDJnfox7X/H/3BYEvzA==",
+      "path": "microsoft.extensions.ai.abstractions/9.5.0",
+      "hashPath": "microsoft.extensions.ai.abstractions.9.5.0.nupkg.sha512"
+    },
     "Microsoft.Extensions.DependencyInjection/6.0.0": {
       "type": "package",
       "serviceable": true,
@@ -693,6 +720,13 @@
       "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
+    "OllamaSharp/5.2.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-bFRAhOXSeigi0Qm9RHOStEDaXiV4bZKZxJNy1v1SOQ/W8X0OGctOmCRqe7ApbVGTAIyD7CPFWhum+eIDfOP75w==",
+      "path": "ollamasharp/5.2.3",
+      "hashPath": "ollamasharp.5.2.3.nupkg.sha512"
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.2": {
       "type": "package",

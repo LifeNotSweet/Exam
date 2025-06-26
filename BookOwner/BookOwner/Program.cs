@@ -80,7 +80,7 @@ internal class Program
                 Console.WriteLine($"Название: {response.Name}");
                 Console.WriteLine($"Автор: {response.Author}");
                 Console.WriteLine($"Описание: {response.Description}");
-                Console.WriteLine("Краткое описание: "+response.Shortdesc);
+                Console.WriteLine("Краткое описание: "+response.Shortdesc+"\n");
             }
         });
 
