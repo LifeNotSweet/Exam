@@ -26,20 +26,21 @@ namespace LibraryService {
           string.Concat(
             "ChJQcm90b3MvZ3JlZXQucHJvdG8SBWdyZWV0IhwKDEhlbGxvUmVxdWVzdBIM",
             "CgRuYW1lGAEgASgJIh0KCkhlbGxvUmVwbHkSDwoHbWVzc2FnZRgBIAEoCSIc",
-            "CgtCb29rc1RpdGxlcxINCgVib29rcxgBIAEoCSI9CghCb29rSW5mbxIMCgRu",
+            "CgtCb29rc1RpdGxlcxINCgVib29rcxgBIAEoCSJQCghCb29rSW5mbxIMCgRu",
             "YW1lGAEgASgJEg4KBmF1dGhvchgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEo",
-            "CTK1AQoHR3JlZXRlchIyCghTYXlIZWxsbxITLmdyZWV0LkhlbGxvUmVxdWVz",
-            "dBoRLmdyZWV0LkhlbGxvUmVwbHkSPQoOR2V0TGlzdE9mQm9va3MSEy5ncmVl",
-            "dC5IZWxsb1JlcXVlc3QaEi5ncmVldC5Cb29rc1RpdGxlcygBMAESNwoLR2V0",
-            "Qm9va0luZm8SEy5ncmVldC5IZWxsb1JlcXVlc3QaDy5ncmVldC5Cb29rSW5m",
-            "bygBMAFCEaoCDkxpYnJhcnlTZXJ2aWNlYgZwcm90bzM="));
+            "CRIRCglzaG9ydGRlc2MYBCABKAkytQEKB0dyZWV0ZXISMgoIU2F5SGVsbG8S",
+            "Ey5ncmVldC5IZWxsb1JlcXVlc3QaES5ncmVldC5IZWxsb1JlcGx5Ej0KDkdl",
+            "dExpc3RPZkJvb2tzEhMuZ3JlZXQuSGVsbG9SZXF1ZXN0GhIuZ3JlZXQuQm9v",
+            "a3NUaXRsZXMoATABEjcKC0dldEJvb2tJbmZvEhMuZ3JlZXQuSGVsbG9SZXF1",
+            "ZXN0Gg8uZ3JlZXQuQm9va0luZm8oATABQhGqAg5MaWJyYXJ5U2VydmljZWIG",
+            "cHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::LibraryService.HelloRequest), global::LibraryService.HelloRequest.Parser, new[]{ "Name" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LibraryService.HelloReply), global::LibraryService.HelloReply.Parser, new[]{ "Message" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LibraryService.BooksTitles), global::LibraryService.BooksTitles.Parser, new[]{ "Books" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LibraryService.BookInfo), global::LibraryService.BookInfo.Parser, new[]{ "Name", "Author", "Description" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::LibraryService.BookInfo), global::LibraryService.BookInfo.Parser, new[]{ "Name", "Author", "Description", "Shortdesc" }, null, null, null, null)
           }));
     }
     #endregion
@@ -684,6 +685,7 @@ namespace LibraryService {
       name_ = other.name_;
       author_ = other.author_;
       description_ = other.description_;
+      shortdesc_ = other.shortdesc_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -729,6 +731,18 @@ namespace LibraryService {
       }
     }
 
+    /// <summary>Field number for the "shortdesc" field.</summary>
+    public const int ShortdescFieldNumber = 4;
+    private string shortdesc_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Shortdesc {
+      get { return shortdesc_; }
+      set {
+        shortdesc_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -747,6 +761,7 @@ namespace LibraryService {
       if (Name != other.Name) return false;
       if (Author != other.Author) return false;
       if (Description != other.Description) return false;
+      if (Shortdesc != other.Shortdesc) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -757,6 +772,7 @@ namespace LibraryService {
       if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (Author.Length != 0) hash ^= Author.GetHashCode();
       if (Description.Length != 0) hash ^= Description.GetHashCode();
+      if (Shortdesc.Length != 0) hash ^= Shortdesc.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -787,6 +803,10 @@ namespace LibraryService {
         output.WriteRawTag(26);
         output.WriteString(Description);
       }
+      if (Shortdesc.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Shortdesc);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -809,6 +829,10 @@ namespace LibraryService {
         output.WriteRawTag(26);
         output.WriteString(Description);
       }
+      if (Shortdesc.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(Shortdesc);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -827,6 +851,9 @@ namespace LibraryService {
       }
       if (Description.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Description);
+      }
+      if (Shortdesc.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Shortdesc);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -848,6 +875,9 @@ namespace LibraryService {
       }
       if (other.Description.Length != 0) {
         Description = other.Description;
+      }
+      if (other.Shortdesc.Length != 0) {
+        Shortdesc = other.Shortdesc;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -880,6 +910,10 @@ namespace LibraryService {
             Description = input.ReadString();
             break;
           }
+          case 34: {
+            Shortdesc = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -909,6 +943,10 @@ namespace LibraryService {
           }
           case 26: {
             Description = input.ReadString();
+            break;
+          }
+          case 34: {
+            Shortdesc = input.ReadString();
             break;
           }
         }

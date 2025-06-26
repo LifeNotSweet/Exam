@@ -80,6 +80,52 @@ namespace LibraryService.Services
                 });
             }
         }
-        
+        private string GetDescription(string title)
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "BooksDescription\\"+title+".txt";
+            string text = File.ReadAllText(path);
+            return text;
+        }
+        public override async Task GetBookInfo(IAsyncStreamReader<HelloRequest> requestStream, IServerStreamWriter<BookInfo> streamTitles, ServerCallContext context)
+        {
+            await foreach (var request in requestStream.ReadAllAsync())
+            {
+                var books=ListOfBooks.GetAll();
+                int temp = -1;
+                string author = "";
+                string name = "";
+                string desc = "";
+                string shorten = "";
+                for(int i = 0; i < books.Count; i++)
+                {
+                    if (books[i].Title.IndexOf(request.Name) > -1)
+                    {
+                        temp = i;
+                        break;
+                    }
+                }
+                if (temp != -1) {
+                    string title = books[temp].Title;
+                    author = title.Substring(title.IndexOf("-") + 1, title.Length - title.IndexOf("-") - 1);
+                    name = title.Substring(1, title.LastIndexOf("\"")- 1);
+                    desc = GetDescription(request.Name);
+                    shorten = await ShortDescription.ShortenTextWithAI(request.Name);
+                }
+                else {
+                    name = "Unfound";
+                    author = "";
+                    desc = "";
+                    shorten = "";
+                }
+                await streamTitles.WriteAsync(new BookInfo()
+                {
+                    Author = author,
+                    Name = name,
+                    Description = desc,
+                    Shortdesc = shorten
+                }
+                ) ;
+            }
+        }
     }
 }

@@ -28,5 +28,6 @@ message BookInfo{
 	string name=1;
 	string author = 2;
 	string description = 3;
+	string shortdesc =4;
 }
 

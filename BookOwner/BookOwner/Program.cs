@@ -65,24 +65,30 @@ internal class Program
 
         // Создаем потоковый вызов
         using var call = client.GetBookInfo();
-
+        await call.RequestStream.WriteAsync(new HelloRequest { Name = bookTitle });
+        await call.RequestStream.CompleteAsync();
         // Задача для чтения ответов от сервера
         var readTask = Task.Run(async () =>
         {
             await foreach (var response in call.ResponseStream.ReadAllAsync())
             {
+                if (response.Name == "Unknown")
+                {
+                    Console.WriteLine("Книга не найдена");
+                    break;
+                }
                 Console.WriteLine($"Название: {response.Name}");
                 Console.WriteLine($"Автор: {response.Author}");
                 Console.WriteLine($"Описание: {response.Description}");
-                Console.WriteLine();
+                Console.WriteLine("Краткое описание: "+response.Shortdesc);
             }
         });
 
         // Отправляем запрос с названием книги
-        await call.RequestStream.WriteAsync(new HelloRequest { Name = bookTitle });
-        await call.RequestStream.CompleteAsync();
+        
 
         await readTask;
+        readTask.Dispose();
     }
 }
 

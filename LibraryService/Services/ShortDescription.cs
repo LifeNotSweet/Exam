@@ -5,57 +5,61 @@ namespace LibraryService.Services
 {
     public class ShortDescription
     {
-        static async Task<string> ShortenTextWithAI(string title)
+        public static async Task<string> ShortenTextWithAI(string title)
         {
             //Настройка
             string apiKey = "sk-391de3fb5e8848149ec053af2d11b3ec";
             string apiUrl = "https://api.deepseek.com/chat/completions";
             //Получение пути
-            string path = AppDomain.CurrentDomain.BaseDirectory + "BooksDescription\"" + title + ".txt";
+            string path = AppDomain.CurrentDomain.BaseDirectory + "BooksDescription\\" + title + ".txt";
             string text = File.ReadAllText(path);
             if (text == "")
                 throw new Exception("There's no book with that title");
             //Запрос
-            using (HttpClient client = new HttpClient())
+            using HttpClient client = new HttpClient();
+            client.Timeout = TimeSpan.FromSeconds(30);
+            client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
+
+            // 3. Формирование запроса
+            var requestData = new
             {
-                var request = new
+                model = "deepseek-chat",
+                messages = new[]
                 {
-                    model = "deepseek-chat",
-                    messages = new[]
-                    {
-                    new
-                    {
-                        role = "system",
-                        content = "Ты профессиональный редактор. Сократи текст, сохранив главную мысль. Результат должен быть в 2-3 раза короче оригинала."
-                    },
-                    new
-                    {
-                        role = "user",
-                        content = text
-                    }
-                },
-                    max_tokens = 2000,
-                    temperature = 0.3
-                };// Добавляем заголовки
-                client.DefaultRequestHeaders.Add("Authorization", $"Bearer {apiKey}");
+                new { role = "system", content = "Сократи текст в 2-3 раза, сохраняя суть" },
+                new { role = "user", content = text }
+            },
+                max_tokens = 2000,
+                temperature = 0.3
+            };
 
-                // Отправляем запрос
-                var json = JsonSerializer.Serialize(request);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
+            var json = JsonSerializer.Serialize(requestData);
+            var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await client.PostAsync(apiUrl, content);
-                var responseString = await response.Content.ReadAsStringAsync();
+            // 4. Отправка запроса и обработка ответа
+            using var response = await client.PostAsync(apiUrl, content);
+            string responseString = await response.Content.ReadAsStringAsync();
 
-                // Парсим ответ
-                using (JsonDocument doc = JsonDocument.Parse(responseString))
+            // Проверка статуса
+            if (!response.IsSuccessStatusCode)
+            {
+                throw new HttpRequestException($"API error: {response.StatusCode}\n{responseString}");
+            }
+
+            // 5. Парсинг ответа с проверкой структуры
+            using JsonDocument doc = JsonDocument.Parse(responseString);
+            JsonElement root = doc.RootElement;
+
+            if (root.TryGetProperty("choices", out JsonElement choices) && choices.GetArrayLength() > 0)
+            {
+                if (choices[0].TryGetProperty("message", out JsonElement message) &&
+                message.TryGetProperty("content", out JsonElement contentElement))
                 {
-                    var root = doc.RootElement;
-                    return root.GetProperty("choices")[0]
-                        .GetProperty("message")
-                        .GetProperty("content")
-                        .GetString();
+                    return contentElement.GetString();
                 }
             }
+            // Если не удалось распарсить
+            throw new InvalidOperationException($"Invalid API response:\n{responseString}");
         }
     }
 }
