@@ -56,6 +56,8 @@ namespace LibraryService {
     static readonly grpc::Marshaller<global::LibraryService.BooksTitles> __Marshaller_greet_BooksTitles = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LibraryService.BooksTitles.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::LibraryService.BookInfo> __Marshaller_greet_BookInfo = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LibraryService.BookInfo.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::LibraryService.NewBook> __Marshaller_greet_NewBook = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LibraryService.NewBook.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::LibraryService.HelloRequest, global::LibraryService.HelloReply> __Method_SayHello = new grpc::Method<global::LibraryService.HelloRequest, global::LibraryService.HelloReply>(
@@ -80,6 +82,22 @@ namespace LibraryService {
         "GetBookInfo",
         __Marshaller_greet_HelloRequest,
         __Marshaller_greet_BookInfo);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::LibraryService.NewBook, global::LibraryService.HelloReply> __Method_AddBook = new grpc::Method<global::LibraryService.NewBook, global::LibraryService.HelloReply>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "AddBook",
+        __Marshaller_greet_NewBook,
+        __Marshaller_greet_HelloReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::LibraryService.HelloRequest, global::LibraryService.HelloReply> __Method_DeleteBook = new grpc::Method<global::LibraryService.HelloRequest, global::LibraryService.HelloReply>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "DeleteBook",
+        __Marshaller_greet_HelloRequest,
+        __Marshaller_greet_HelloReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -181,6 +199,26 @@ namespace LibraryService {
       public virtual grpc::AsyncDuplexStreamingCall<global::LibraryService.HelloRequest, global::LibraryService.BookInfo> GetBookInfo(grpc::CallOptions options)
       {
         return CallInvoker.AsyncDuplexStreamingCall(__Method_GetBookInfo, null, options);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::LibraryService.NewBook, global::LibraryService.HelloReply> AddBook(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return AddBook(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::LibraryService.NewBook, global::LibraryService.HelloReply> AddBook(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_AddBook, null, options);
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::LibraryService.HelloRequest, global::LibraryService.HelloReply> DeleteBook(grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return DeleteBook(new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncDuplexStreamingCall<global::LibraryService.HelloRequest, global::LibraryService.HelloReply> DeleteBook(grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncDuplexStreamingCall(__Method_DeleteBook, null, options);
       }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]

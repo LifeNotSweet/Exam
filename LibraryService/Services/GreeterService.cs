@@ -127,5 +127,9 @@ namespace LibraryService.Services
                 ) ;
             }
         }
+        public override async Task AddBook(IAsyncStreamReader<NewBook> requestStream, IServerStreamWriter<HelloReply> streamTitles, ServerCallContext context)
+        {
+
+        }
     }
 }

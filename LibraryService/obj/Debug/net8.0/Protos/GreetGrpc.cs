@@ -56,6 +56,8 @@ namespace LibraryService {
     static readonly grpc::Marshaller<global::LibraryService.BooksTitles> __Marshaller_greet_BooksTitles = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LibraryService.BooksTitles.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::LibraryService.BookInfo> __Marshaller_greet_BookInfo = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LibraryService.BookInfo.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::LibraryService.NewBook> __Marshaller_greet_NewBook = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LibraryService.NewBook.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::LibraryService.HelloRequest, global::LibraryService.HelloReply> __Method_SayHello = new grpc::Method<global::LibraryService.HelloRequest, global::LibraryService.HelloReply>(
@@ -80,6 +82,22 @@ namespace LibraryService {
         "GetBookInfo",
         __Marshaller_greet_HelloRequest,
         __Marshaller_greet_BookInfo);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::LibraryService.NewBook, global::LibraryService.HelloReply> __Method_AddBook = new grpc::Method<global::LibraryService.NewBook, global::LibraryService.HelloReply>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "AddBook",
+        __Marshaller_greet_NewBook,
+        __Marshaller_greet_HelloReply);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::LibraryService.HelloRequest, global::LibraryService.HelloReply> __Method_DeleteBook = new grpc::Method<global::LibraryService.HelloRequest, global::LibraryService.HelloReply>(
+        grpc::MethodType.DuplexStreaming,
+        __ServiceName,
+        "DeleteBook",
+        __Marshaller_greet_HelloRequest,
+        __Marshaller_greet_HelloReply);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
@@ -115,6 +133,18 @@ namespace LibraryService {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task AddBook(grpc::IAsyncStreamReader<global::LibraryService.NewBook> requestStream, grpc::IServerStreamWriter<global::LibraryService.HelloReply> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task DeleteBook(grpc::IAsyncStreamReader<global::LibraryService.HelloRequest> requestStream, grpc::IServerStreamWriter<global::LibraryService.HelloReply> responseStream, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
     }
 
     /// <summary>Creates service definition that can be registered with a server</summary>
@@ -125,7 +155,9 @@ namespace LibraryService {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_SayHello, serviceImpl.SayHello)
           .AddMethod(__Method_GetListOfBooks, serviceImpl.GetListOfBooks)
-          .AddMethod(__Method_GetBookInfo, serviceImpl.GetBookInfo).Build();
+          .AddMethod(__Method_GetBookInfo, serviceImpl.GetBookInfo)
+          .AddMethod(__Method_AddBook, serviceImpl.AddBook)
+          .AddMethod(__Method_DeleteBook, serviceImpl.DeleteBook).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -138,6 +170,8 @@ namespace LibraryService {
       serviceBinder.AddMethod(__Method_SayHello, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LibraryService.HelloRequest, global::LibraryService.HelloReply>(serviceImpl.SayHello));
       serviceBinder.AddMethod(__Method_GetListOfBooks, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::LibraryService.HelloRequest, global::LibraryService.BooksTitles>(serviceImpl.GetListOfBooks));
       serviceBinder.AddMethod(__Method_GetBookInfo, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::LibraryService.HelloRequest, global::LibraryService.BookInfo>(serviceImpl.GetBookInfo));
+      serviceBinder.AddMethod(__Method_AddBook, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::LibraryService.NewBook, global::LibraryService.HelloReply>(serviceImpl.AddBook));
+      serviceBinder.AddMethod(__Method_DeleteBook, serviceImpl == null ? null : new grpc::DuplexStreamingServerMethod<global::LibraryService.HelloRequest, global::LibraryService.HelloReply>(serviceImpl.DeleteBook));
     }
 
   }

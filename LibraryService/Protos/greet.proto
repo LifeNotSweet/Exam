@@ -10,6 +10,8 @@ service Greeter {
   rpc SayHello (HelloRequest) returns (HelloReply);
   rpc GetListOfBooks(stream HelloRequest) returns (stream BooksTitles);
   rpc GetBookInfo(stream HelloRequest) returns (stream BookInfo);
+  rpc AddBook(stream NewBook) returns (stream HelloReply);
+  rpc DeleteBook(stream HelloRequest) returns (stream HelloReply);
 }
 
 // The request message containing the user's name.
@@ -23,6 +25,12 @@ message HelloReply {
 }
 message BooksTitles{
 	string books = 1;
+}
+message NewBook{
+	string name=1;
+	string author=2;
+	int32 shelf =3;
+	int32 room=4;
 }
 message BookInfo{
 	string name=1;

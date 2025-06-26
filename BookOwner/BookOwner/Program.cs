@@ -4,14 +4,48 @@ using LibraryService;
 
 internal class Program
 {
-
+    static private string password = "root";
     static async Task Main(string[] args)
     {
         using var channel = GrpcChannel.ForAddress("https://localhost:7001");
         var client = new Greeter.GreeterClient(channel);
         var callListOfBooks = client.GetListOfBooks();
         string choice = "";
-        while (choice != "0")
+        bool Authorized = false;
+        bool Admin = false;
+        while (!Authorized)
+        {
+            Console.WriteLine("Выберите права:");
+            Console.WriteLine("1 - Пользователь");
+            Console.WriteLine("2 - Администратор");
+            Console.WriteLine("0 - Выход");
+            choice = Console.ReadLine();
+            if (choice == "1")
+                Authorized = true;
+            if(choice == "2")
+            {
+                string temp = "";
+                Console.WriteLine("Пожалуйста, введите пароль для администратора:");
+                temp=Console.ReadLine();
+                if (temp == password)
+                {
+                    Authorized = true;
+                    Admin = true;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка: неверный пароль\n");
+                    continue;
+                }
+            }
+            if (choice == "0")
+                break;
+            else
+                Console.WriteLine("Неизвестная команда.\n");
+
+        }
+        while (choice != "0" && Admin==false)
         {
             Console.WriteLine("Выберите действие:");
             Console.WriteLine("1 - Получить список всех книг");
@@ -27,6 +61,36 @@ internal class Program
                     break;
                 case "2":
                     await GetBookInfo(client);
+                    break;
+                default:
+                    Console.WriteLine("Неверный выбор");
+                    break;
+            }
+        }
+        while (choice != "0" && Admin == true)
+        {
+            Console.WriteLine("Выберите действие:");
+            Console.WriteLine("1 - Получить список всех книг");
+            Console.WriteLine("2 - Получить информацию о конкретной книге");
+            Console.WriteLine("3 - Добавить книгу");
+            Console.WriteLine("4 - Удалить книгу");
+            Console.WriteLine("0 - Выход");
+
+            choice = Console.ReadLine();
+
+            switch (choice)
+            {
+                case "1":
+                    await GetBooksList(client);
+                    break;
+                case "2":
+                    await GetBookInfo(client);
+                    break;
+                case "3":
+
+                    break;
+                case "4":
+
                     break;
                 default:
                     Console.WriteLine("Неверный выбор");
