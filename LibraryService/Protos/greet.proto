@@ -22,7 +22,7 @@ message HelloReply {
   string message = 1;
 }
 message BooksTitles{
-	string books = 3;
+	string books = 1;
 }
 message BookInfo{
 	string name=1;

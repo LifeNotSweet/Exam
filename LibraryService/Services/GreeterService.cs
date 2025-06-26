@@ -17,30 +17,40 @@ namespace LibraryService.Services
 
             ListOfBooks = new BookLibrary();
             string text=ReadBooks();
-            while(text != null)
+            while(text != "")
             {
                 string line = text.Substring(0,text.IndexOf("\n"));
-                text.Remove(text.IndexOf("\n"));
-                while(line != null)
+                if (text.IndexOf("\n") + 1 != text.Length)
+                    text = text.Remove(0, text.IndexOf("\n") + 1);
+                else
+                    text = "";
+                while(line != "")
                 {
-                    ListOfBooks.Add(Convert.ToInt32(line.Substring(line.IndexOf("{"),line.IndexOf(","))), Convert.ToInt32(line.Substring(line.IndexOf(","), line.IndexOf("}"))), line.Substring(0, line.LastIndexOf(";")));
+                    int first = line.IndexOf("{") + 1;
+                    int second = line.IndexOf(",") - line.IndexOf("{")-1;
+                    int third = line.IndexOf(",") + 1;
+                    int fourth = line.IndexOf("}") - line.IndexOf(",")-1;
+                    int fifth = line.LastIndexOf(";")-1-line.IndexOf("\"");
+                    ListOfBooks.Add(Convert.ToInt32(line.Substring(first,second)), Convert.ToInt32(line.Substring(third, fourth)), line.Substring(line.IndexOf("\""), fifth));
                     var bb = ListOfBooks.GetAll();
                     if (!CheckBorrowing(line))
                     {
-                        if (line.Substring(line.IndexOf("}"), line.IndexOf(":")) == "CheckedOut")
+                        int tt = line.IndexOf("}") + 1;
+                        if (line.Substring(tt, line.IndexOf(":")-tt-1) == "CheckedOut")
                             bb[bb.Count - 1].Status = BookStatus.CheckedOut;
                         else
                             bb[bb.Count - 1].Status = BookStatus.Reserved;
-                        bb[bb.Count - 1].CurrentHolder = line.Substring(line.IndexOf(":"), line.Length - line.IndexOf(":"));
+                        bb[bb.Count - 1].CurrentHolder = line.Substring(line.IndexOf(":")+1, line.Length - line.IndexOf(":")-1-1);
                     }
                     else
                         bb[bb.Count - 1].Status = BookStatus.Available;
+                    break;
                 }
             }
         }
         private bool CheckBorrowing(string text)
         {
-            if (text.IndexOf("}") + 1 == text.Length)
+            if (text.IndexOf("}") + 2 == text.Length)
                 return true;
             else {
                 return false;
@@ -65,9 +75,11 @@ namespace LibraryService.Services
             {
                 await streamTitles.WriteAsync(new BooksTitles()
                 {
+                    
                     Books = ReadBooks()
                 });
             }
         }
+        
     }
 }

@@ -1,4 +1,4 @@
-1."Moby Dick"-Herman Melville;{1,1}Jack Hill
+1."Moby Dick"-Herman Melville;{1,1}
 2."Frankenstein"-Mary Shelley;{2,1}
 3."Wuthering Heights"-Emily Bronte;{3,1}
 4."Great Expectations"-Charles Dickens;{2,2}

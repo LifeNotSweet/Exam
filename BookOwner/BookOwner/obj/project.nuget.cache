@@ -1,15 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "mS93ekEqvz4=",
+  "dgSpecHash": "+xDhgIbrsgly6cek2c4gdigHCF1e9+4UvBvDrkzsMlUgT7AMcpac2Aee3bjYeBZ4UWQYovoj8V+GXepvhG/kNQ==",
   "success": true,
-  "projectFilePath": "D:\\Exam\\Exam\\BookOwner\\BookOwner\\BookOwner.csproj",
+  "projectFilePath": "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\BookOwner\\BookOwner\\BookOwner.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Sergey\\.nuget\\packages\\google.protobuf\\3.31.1\\google.protobuf.3.31.1.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\grpc.core.api\\2.71.0\\grpc.core.api.2.71.0.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\grpc.net.client\\2.71.0\\grpc.net.client.2.71.0.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\grpc.net.common\\2.71.0\\grpc.net.common.2.71.0.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\grpc.tools\\2.72.0\\grpc.tools.2.72.0.nupkg.sha512",
-    "C:\\Users\\Sergey\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512"
+    "C:\\Users\\baran\\.nuget\\packages\\google.protobuf\\3.31.1\\google.protobuf.3.31.1.nupkg.sha512",
+    "C:\\Users\\baran\\.nuget\\packages\\grpc.core.api\\2.71.0\\grpc.core.api.2.71.0.nupkg.sha512",
+    "C:\\Users\\baran\\.nuget\\packages\\grpc.net.client\\2.71.0\\grpc.net.client.2.71.0.nupkg.sha512",
+    "C:\\Users\\baran\\.nuget\\packages\\grpc.net.common\\2.71.0\\grpc.net.common.2.71.0.nupkg.sha512",
+    "C:\\Users\\baran\\.nuget\\packages\\grpc.tools\\2.72.0\\grpc.tools.2.72.0.nupkg.sha512",
+    "C:\\Users\\baran\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512"
   ],
   "logs": []
 }
