@@ -9,6 +9,7 @@
       "LibraryService/1.0.0": {
         "dependencies": {
           "Grpc.AspNetCore": "2.57.0",
+          "Grpc.Core.Api": "2.71.0",
           "System.Net.Http": "4.3.4",
           "System.Text.Json": "9.0.6"
         },
@@ -54,11 +55,11 @@
           }
         }
       },
-      "Grpc.Core.Api/2.57.0": {
+      "Grpc.Core.Api/2.71.0": {
         "runtime": {
           "lib/netstandard2.1/Grpc.Core.Api.dll": {
             "assemblyVersion": "2.0.0.0",
-            "fileVersion": "2.57.0.0"
+            "fileVersion": "2.71.0.0"
           }
         }
       },
@@ -88,7 +89,7 @@
       },
       "Grpc.Net.Common/2.57.0": {
         "dependencies": {
-          "Grpc.Core.Api": "2.57.0"
+          "Grpc.Core.Api": "2.71.0"
         },
         "runtime": {
           "lib/net8.0/Grpc.Net.Common.dll": {
@@ -595,12 +596,12 @@
       "path": "grpc.aspnetcore.server.clientfactory/2.57.0",
       "hashPath": "grpc.aspnetcore.server.clientfactory.2.57.0.nupkg.sha512"
     },
-    "Grpc.Core.Api/2.57.0": {
+    "Grpc.Core.Api/2.71.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-48jpfMyYdhaPS6PGnk7sEqSO3+c/w11ahY+a33ymo0BsQEsBVIoJoS5xMsl5RzBlpKY41PnN+qJGMm3VyE5OQg==",
-      "path": "grpc.core.api/2.57.0",
-      "hashPath": "grpc.core.api.2.57.0.nupkg.sha512"
+      "sha512": "sha512-QquqUC37yxsDzd1QaDRsH2+uuznWPTS8CVE2Yzwl3CvU4geTNkolQXoVN812M2IwT6zpv3jsZRc9ExJFNFslTg==",
+      "path": "grpc.core.api/2.71.0",
+      "hashPath": "grpc.core.api.2.71.0.nupkg.sha512"
     },
     "Grpc.Net.Client/2.57.0": {
       "type": "package",

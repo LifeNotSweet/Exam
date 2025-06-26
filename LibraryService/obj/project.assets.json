@@ -68,7 +68,7 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "Grpc.Core.Api/2.57.0": {
+      "Grpc.Core.Api/2.71.0": {
         "type": "package",
         "compile": {
           "lib/netstandard2.1/Grpc.Core.Api.dll": {
@@ -1231,22 +1231,19 @@
         "packageIcon.png"
       ]
     },
-    "Grpc.Core.Api/2.57.0": {
-      "sha512": "48jpfMyYdhaPS6PGnk7sEqSO3+c/w11ahY+a33ymo0BsQEsBVIoJoS5xMsl5RzBlpKY41PnN+qJGMm3VyE5OQg==",
+    "Grpc.Core.Api/2.71.0": {
+      "sha512": "QquqUC37yxsDzd1QaDRsH2+uuznWPTS8CVE2Yzwl3CvU4geTNkolQXoVN812M2IwT6zpv3jsZRc9ExJFNFslTg==",
       "type": "package",
-      "path": "grpc.core.api/2.57.0",
+      "path": "grpc.core.api/2.71.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
-        "grpc.core.api.2.57.0.nupkg.sha512",
+        "grpc.core.api.2.71.0.nupkg.sha512",
         "grpc.core.api.nuspec",
         "lib/net462/Grpc.Core.Api.dll",
         "lib/net462/Grpc.Core.Api.pdb",
         "lib/net462/Grpc.Core.Api.xml",
-        "lib/netstandard1.5/Grpc.Core.Api.dll",
-        "lib/netstandard1.5/Grpc.Core.Api.pdb",
-        "lib/netstandard1.5/Grpc.Core.Api.xml",
         "lib/netstandard2.0/Grpc.Core.Api.dll",
         "lib/netstandard2.0/Grpc.Core.Api.pdb",
         "lib/netstandard2.0/Grpc.Core.Api.xml",
@@ -3802,29 +3799,25 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "Grpc.AspNetCore >= 2.57.0",
+      "Grpc.Core.Api >= 2.71.0",
       "System.Net.Http >= 4.3.4",
       "System.Text.Json >= 9.0.6"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Sergey\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\baran\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Exam\\Exam\\LibraryService\\LibraryService.csproj",
+      "projectUniqueName": "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\LibraryService\\LibraryService.csproj",
       "projectName": "LibraryService",
-      "projectPath": "D:\\Exam\\Exam\\LibraryService\\LibraryService.csproj",
-      "packagesPath": "C:\\Users\\Sergey\\.nuget\\packages\\",
-      "outputPath": "D:\\Exam\\Exam\\LibraryService\\obj\\",
+      "projectPath": "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\LibraryService\\LibraryService.csproj",
+      "packagesPath": "C:\\Users\\baran\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\LibraryService\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\baran\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3849,8 +3842,7 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      },
-      "SdkAnalysisLevel": "9.0.200"
+      }
     },
     "frameworks": {
       "net8.0": {
@@ -3859,6 +3851,10 @@
           "Grpc.AspNetCore": {
             "target": "Package",
             "version": "[2.57.0, )"
+          },
+          "Grpc.Core.Api": {
+            "target": "Package",
+            "version": "[2.71.0, )"
           },
           "System.Net.Http": {
             "target": "Package",
@@ -3888,7 +3884,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
