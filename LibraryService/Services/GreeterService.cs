@@ -11,20 +11,46 @@ namespace LibraryService.Services
     {
         private readonly ILogger<GreeterService> _logger;
         private BookLibrary ListOfBooks;
-        RepeatedField<string> Items { get; set; }
         public GreeterService(ILogger<GreeterService> logger)
         {
             _logger = logger;
 
             ListOfBooks = new BookLibrary();
-            string path = AppDomain.CurrentDomain.BaseDirectory + "Books.txt";
-            string text = File.ReadAllText(path);
+            string text=ReadBooks();
             while(text != null)
             {
                 string line = text.Substring(0,text.IndexOf("\n"));
-                Items.Add(line);
                 text.Remove(text.IndexOf("\n"));
+                while(line != null)
+                {
+                    ListOfBooks.Add(Convert.ToInt32(line.Substring(line.IndexOf("{"),line.IndexOf(","))), Convert.ToInt32(line.Substring(line.IndexOf(","), line.IndexOf("}"))), line.Substring(0, line.LastIndexOf(";")));
+                    var bb = ListOfBooks.GetAll();
+                    if (!CheckBorrowing(line))
+                    {
+                        if (line.Substring(line.IndexOf("}"), line.IndexOf(":")) == "CheckedOut")
+                            bb[bb.Count - 1].Status = BookStatus.CheckedOut;
+                        else
+                            bb[bb.Count - 1].Status = BookStatus.Reserved;
+                        bb[bb.Count - 1].CurrentHolder = line.Substring(line.IndexOf(":"), line.Length - line.IndexOf(":"));
+                    }
+                    else
+                        bb[bb.Count - 1].Status = BookStatus.Available;
+                }
             }
+        }
+        private bool CheckBorrowing(string text)
+        {
+            if (text.IndexOf("}") + 1 == text.Length)
+                return true;
+            else {
+                return false;
+                 }
+        }
+        private string ReadBooks()
+        {
+            string path = AppDomain.CurrentDomain.BaseDirectory + "Books.txt";
+            string text = File.ReadAllText(path);
+            return text;
         }
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
@@ -33,16 +59,15 @@ namespace LibraryService.Services
                 Message = "Hello " + request.Name
             });
         }
-        public override async Task<HelloReply> GetListOfBooks(IAsyncStreamReader<HelloRequest> requestStream, IServerStreamWriter<BooksTitles> streamTitles, ServerCallContext context)
+        public override async Task GetListOfBooks(IAsyncStreamReader<HelloRequest> requestStream, IServerStreamWriter<BooksTitles> streamTitles, ServerCallContext context)
         {
             await foreach (var request in requestStream.ReadAllAsync())
             {
                 await streamTitles.WriteAsync(new BooksTitles()
                 {
-
-                    books = Items;
-            });
+                    Books = ReadBooks()
+                });
+            }
         }
     }
-}
 }

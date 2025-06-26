@@ -26,7 +26,7 @@ namespace LibraryService {
           string.Concat(
             "ChJQcm90b3MvZ3JlZXQucHJvdG8SBWdyZWV0IhwKDEhlbGxvUmVxdWVzdBIM",
             "CgRuYW1lGAEgASgJIh0KCkhlbGxvUmVwbHkSDwoHbWVzc2FnZRgBIAEoCSIc",
-            "CgtCb29rc1RpdGxlcxINCgVib29rcxgBIAMoCSI9CghCb29rSW5mbxIMCgRu",
+            "CgtCb29rc1RpdGxlcxINCgVib29rcxgDIAEoCSI9CghCb29rSW5mbxIMCgRu",
             "YW1lGAEgASgJEg4KBmF1dGhvchgCIAEoCRITCgtkZXNjcmlwdGlvbhgDIAEo",
             "CTK1AQoHR3JlZXRlchIyCghTYXlIZWxsbxITLmdyZWV0LkhlbGxvUmVxdWVz",
             "dBoRLmdyZWV0LkhlbGxvUmVwbHkSPQoOR2V0TGlzdE9mQm9va3MSEy5ncmVl",
@@ -49,6 +49,7 @@ namespace LibraryService {
   /// <summary>
   /// The request message containing the user's name.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class HelloRequest : pb::IMessage<HelloRequest>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -204,7 +205,11 @@ namespace LibraryService {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -223,7 +228,11 @@ namespace LibraryService {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -241,6 +250,7 @@ namespace LibraryService {
   /// <summary>
   /// The response message containing the greetings.
   /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class HelloReply : pb::IMessage<HelloReply>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -396,7 +406,11 @@ namespace LibraryService {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -415,7 +429,11 @@ namespace LibraryService {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
@@ -430,6 +448,7 @@ namespace LibraryService {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class BooksTitles : pb::IMessage<BooksTitles>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -464,7 +483,7 @@ namespace LibraryService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public BooksTitles(BooksTitles other) : this() {
-      books_ = other.books_.Clone();
+      books_ = other.books_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -475,14 +494,15 @@ namespace LibraryService {
     }
 
     /// <summary>Field number for the "books" field.</summary>
-    public const int BooksFieldNumber = 1;
-    private static readonly pb::FieldCodec<string> _repeated_books_codec
-        = pb::FieldCodec.ForString(10);
-    private readonly pbc::RepeatedField<string> books_ = new pbc::RepeatedField<string>();
+    public const int BooksFieldNumber = 3;
+    private string books_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> Books {
+    public string Books {
       get { return books_; }
+      set {
+        books_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -500,7 +520,7 @@ namespace LibraryService {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!books_.Equals(other.books_)) return false;
+      if (Books != other.Books) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -508,7 +528,7 @@ namespace LibraryService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= books_.GetHashCode();
+      if (Books.Length != 0) hash ^= Books.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -527,7 +547,10 @@ namespace LibraryService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      books_.WriteTo(output, _repeated_books_codec);
+      if (Books.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Books);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -538,7 +561,10 @@ namespace LibraryService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      books_.WriteTo(ref output, _repeated_books_codec);
+      if (Books.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Books);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -549,7 +575,9 @@ namespace LibraryService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      size += books_.CalculateSize(_repeated_books_codec);
+      if (Books.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Books);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -562,7 +590,9 @@ namespace LibraryService {
       if (other == null) {
         return;
       }
-      books_.Add(other.books_);
+      if (other.Books.Length != 0) {
+        Books = other.Books;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -574,12 +604,16 @@ namespace LibraryService {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            books_.AddEntriesFrom(input, _repeated_books_codec);
+          case 26: {
+            Books = input.ReadString();
             break;
           }
         }
@@ -593,12 +627,16 @@ namespace LibraryService {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            books_.AddEntriesFrom(ref input, _repeated_books_codec);
+          case 26: {
+            Books = input.ReadString();
             break;
           }
         }
@@ -608,6 +646,7 @@ namespace LibraryService {
 
   }
 
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
   public sealed partial class BookInfo : pb::IMessage<BookInfo>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -821,7 +860,11 @@ namespace LibraryService {
     #else
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
@@ -848,7 +891,11 @@ namespace LibraryService {
     void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
       uint tag;
       while ((tag = input.ReadTag()) != 0) {
-        switch(tag) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;

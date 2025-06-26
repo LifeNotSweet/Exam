@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Exam\\Exam\\LibraryService\\LibraryService.csproj": {}
+    "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\LibraryService\\LibraryService.csproj": {}
   },
   "projects": {
-    "D:\\Exam\\Exam\\LibraryService\\LibraryService.csproj": {
+    "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\LibraryService\\LibraryService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Exam\\Exam\\LibraryService\\LibraryService.csproj",
+        "projectUniqueName": "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\LibraryService\\LibraryService.csproj",
         "projectName": "LibraryService",
-        "projectPath": "D:\\Exam\\Exam\\LibraryService\\LibraryService.csproj",
-        "packagesPath": "C:\\Users\\Sergey\\.nuget\\packages\\",
-        "outputPath": "D:\\Exam\\Exam\\LibraryService\\obj\\",
+        "projectPath": "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\LibraryService\\LibraryService.csproj",
+        "packagesPath": "C:\\Users\\baran\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\baran\\OneDrive\\Документы\\C#\\Exam\\LibraryService\\LibraryService\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Sergey\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\baran\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,8 +39,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.200"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -52,7 +47,7 @@
           "dependencies": {
             "Grpc.AspNetCore": {
               "target": "Package",
-              "version": "[2.57.0, )"
+              "version": "[2.71.0, )"
             },
             "Grpc.Core.Api": {
               "target": "Package",
@@ -86,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

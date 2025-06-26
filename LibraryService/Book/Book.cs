@@ -12,8 +12,8 @@
         public int ShelfNumber { get; }
         public int RoomNumber { get; }
         public string Title { get; }
-        public BookStatus Status { get; private set; }
-        public string CurrentHolder { get; private set; }
+        public BookStatus Status { get; set; }
+        public string CurrentHolder { get; set; }
         public string DescriptionFilePath { get; }
 
 
