@@ -11,12 +11,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("LibraryService")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("Librarian")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5962a2f9935955b10659f975820802d43ddfc03b")]
-[assembly: System.Reflection.AssemblyProductAttribute("LibraryService")]
-[assembly: System.Reflection.AssemblyTitleAttribute("LibraryService")]
+[assembly: System.Reflection.AssemblyProductAttribute("Librarian")]
+[assembly: System.Reflection.AssemblyTitleAttribute("Librarian")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.
