@@ -29,7 +29,7 @@
 
     public class BookLibrary
     {
-        private List<Book> _books = new List<Book>();
+        private readonly List<Book> _books = new List<Book>();
 
         public Book Add(int shelf, int room, string title)
         {
@@ -40,7 +40,10 @@
 
         public Book Find(int shelf, int room, string title)
         {
-            return _books.FirstOrDefault(b => b.ShelfNumber == shelf && b.RoomNumber == room && b.Title == title);
+            return _books.FirstOrDefault(b =>
+                b.ShelfNumber == shelf &&
+                b.RoomNumber == room &&
+                b.Title == title);
         }
 
         public bool Remove(int shelf, int room, string title)
